@@ -30,32 +30,32 @@ function Calendar({ month, onNextMonth, onPreviousMonth, onToday }) {
 
   return (
     <section className={styles.wrapper}>
-      <p className={styles.selectionHint}>{rangeLabel}</p>
+      <section key={monthToken} className={`${styles.datesPane} calendar-flip`}>
+        <MonthHeader
+          monthLabel={monthLabel}
+          onPrevious={onPreviousMonth}
+          onNext={onNextMonth}
+          onToday={onToday}
+        />
 
-      <div className={styles.contentRow}>
+        <DayGrid
+          days={days}
+          weekdayLabels={weekdayLabels}
+          visibleMonth={month}
+          startDate={startDate}
+          endDate={endDate}
+          hoverDate={hoverDate}
+          onDayClick={onDayClick}
+          onDayHover={onDayHover}
+          onGridLeave={resetHover}
+        />
+      </section>
+
+      <p className={styles.selectionHint}>Selected: {rangeLabel}</p>
+
+      <section className={styles.notesPane}>
         <NotesSection key={notesKey} notesKey={notesKey} />
-
-        <section key={monthToken} className={`${styles.datesPane} calendar-flip`}>
-          <MonthHeader
-            monthLabel={monthLabel}
-            onPrevious={onPreviousMonth}
-            onNext={onNextMonth}
-            onToday={onToday}
-          />
-
-          <DayGrid
-            days={days}
-            weekdayLabels={weekdayLabels}
-            visibleMonth={month}
-            startDate={startDate}
-            endDate={endDate}
-            hoverDate={hoverDate}
-            onDayClick={onDayClick}
-            onDayHover={onDayHover}
-            onGridLeave={resetHover}
-          />
-        </section>
-      </div>
+      </section>
     </section>
   )
 }

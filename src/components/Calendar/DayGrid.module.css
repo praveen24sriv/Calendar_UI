@@ -12,13 +12,13 @@
 
 .weekdayCell {
   text-align: center;
-  color: #475569;
-  font-size: 0.73rem;
-  font-weight: 700;
+  color: #4b5563;
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
   letter-spacing: 0.02em;
 }
 
 .weekdayCell:nth-child(6),
 .weekdayCell:nth-child(7) {
-  color: #2f9de0;
+  color: #3e9dd9;
 }

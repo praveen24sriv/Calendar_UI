@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
+
 :root {
   --bg-page: #f2f6fb;
   --bg-surface: #ffffff;
@@ -5,8 +7,8 @@
   --border-soft: #e2e8f0;
 
   --primary: #3b82f6;
-  --primary-600: #2563eb;
-  --primary-100: #dbeafe;
+  --primary-600: #2b8bcf;
+  --primary-100: #eaf5fd;
 
   --text-main: #0f172a;
   --text-subtle: #64748b;
@@ -17,6 +19,15 @@
   --radius-sm: 8px;
 
   --shadow-soft: 0 12px 35px rgba(15, 23, 42, 0.08);
+
+  --font-sans: 'Manrope', 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+
+  --fs-caption: 0.75rem;
+  --fs-body-sm: 0.86rem;
+  --fs-body: 0.97rem;
+  --fs-title: 1.02rem;
+  --fs-display: 1.7rem;
 }
 
 * {
@@ -31,7 +42,7 @@ body,
 }
 
 body {
-  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-sans);
   color: var(--text-main);
   background: #e5e7eb;
 }

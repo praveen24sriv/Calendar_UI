@@ -1,35 +1,47 @@
 .wrapper {
   padding: 1rem 1.2rem 1.3rem;
   display: grid;
-  gap: 0.8rem;
+  grid-template-columns: 1.2fr 0.92fr;
+  grid-template-areas:
+    'dates notes'
+    'selection notes';
+  gap: 0.85rem 1.2rem;
 }
 
 .selectionHint {
+  grid-area: selection;
   margin: 0;
-  padding: 0.5rem 0.1rem;
+  padding: 0.45rem 0.1rem 0.5rem;
   color: #6b7280;
-  font-size: 0.8rem;
+  font-size: var(--fs-body);
+  font-weight: 500;
   border-bottom: 1px solid #edf2f7;
 }
 
-.contentRow {
-  display: grid;
-  grid-template-columns: 0.92fr 1.2fr;
-  gap: 1.2rem;
+@media (max-width: 820px) {
+  .selectionHint {
+    font-size: var(--fs-body);
+  }
 }
 
 .datesPane {
+  grid-area: dates;
   display: grid;
   gap: 0.55rem;
+}
+
+.notesPane {
+  grid-area: notes;
 }
 
 @media (max-width: 820px) {
   .wrapper {
     padding: 0.9rem;
-  }
-
-  .contentRow {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-areas:
+      'dates'
+      'selection'
+      'notes';
+    gap: 0.95rem;
   }
 }

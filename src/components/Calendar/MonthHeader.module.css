@@ -7,9 +7,12 @@
 
 .title {
   margin: 0;
-  font-size: 1rem;
-  letter-spacing: 0.02em;
+  font-size: var(--fs-display);
+  letter-spacing: 0.01em;
+  line-height: 1.05;
   text-align: center;
+  font-family: var(--font-display);
+  font-weight: 700;
 }
 
 .titleWrap {
@@ -23,8 +26,9 @@
   border-radius: 999px;
   background: #ffffff;
   color: var(--text-subtle);
-  padding: 0.15rem 0.45rem;
-  font-size: 0.7rem;
+  padding: 0.18rem 0.58rem;
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -39,9 +43,20 @@
   border: 1px solid #e2e8f0;
   border-radius: 999px;
   background: #ffffff;
-  color: var(--text-main);
+  color: #334155;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 820px) {
+  .title {
+    font-size: 1.45rem;
+  }
+
+  .todayButton {
+    font-size: 0.8rem;
+  }
 }
 
 .navButton:hover {

@@ -1,7 +1,7 @@
 .wrapper {
   padding-top: 0.3rem;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.42rem;
 }
 
 .headerRow {
@@ -12,13 +12,16 @@
 
 .title {
   margin: 0;
-  font-size: 0.82rem;
-  letter-spacing: 0.03em;
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
+  font-family: var(--font-display);
+  font-weight: 700;
 }
 
 .status {
-  font-size: 0.74rem;
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
   color: #94a3b8;
 }
 
@@ -30,6 +33,7 @@
   border-radius: 0;
   padding: 0.25rem 0.2rem;
   color: #334155;
+  font-size: var(--fs-body);
   background:
     repeating-linear-gradient(
       to bottom,
@@ -39,6 +43,12 @@
       #dbe3ee 28px
     );
   line-height: 28px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+.textarea::placeholder {
+  color: rgba(51, 65, 85, 0.3);
 }
 
 .textarea:focus {
@@ -49,11 +59,12 @@
   justify-self: start;
   border: 0;
   border-radius: 999px;
-  padding: 0.4rem 0.8rem;
+  padding: 0.4rem 0.9rem;
   background: #0f172a;
   color: var(--text-inverse);
   cursor: pointer;
-  font-size: 0.75rem;
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }

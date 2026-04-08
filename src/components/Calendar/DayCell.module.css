@@ -2,7 +2,7 @@
   position: relative;
   border: 0;
   background: transparent;
-  color: #1f2937;
+  color: #253041;
   border-radius: 999px;
   width: 2.05rem;
   height: 2.05rem;
@@ -12,7 +12,7 @@
 }
 
 .day:hover {
-  background: #edf5ff;
+  background: #f3f7fb;
 }
 
 .outsideMonth {
@@ -20,19 +20,19 @@
 }
 
 .today {
-  box-shadow: inset 0 0 0 1px #94a3b8;
+  box-shadow: inset 0 0 0 1px #9caabf;
 }
 
 .inRange {
-  background: #e0f2ff;
+  background: #eaf5fd;
 }
 
 .previewRange {
-  background: #f0f8ff;
+  background: #f4f9fe;
 }
 
 .endpoint {
-  background: #2f9de0;
+  background: #3e9dd9;
   color: var(--text-inverse);
 }
 
