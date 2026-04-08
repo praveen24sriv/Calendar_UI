@@ -64,6 +64,38 @@ function HeroImage({ month }) {
     }
   }, [heroImageSrc, isImageError, monthIndex])
 
+  useEffect(() => {
+    const adjacentMonthIndexes = [
+      (monthIndex + 11) % 12,
+      (monthIndex + 1) % 12,
+    ]
+
+    adjacentMonthIndexes.forEach((index) => {
+      if (resolvedImageByMonth[index] || failedMonths.has(index)) return
+
+      HERO_IMAGE_LOADERS_BY_MONTH[index]()
+        .then((resolvedSrc) => {
+          setResolvedImageByMonth((previous) => {
+            if (previous[index]) return previous
+
+            return {
+              ...previous,
+              [index]: resolvedSrc,
+            }
+          })
+        })
+        .catch(() => {
+          setFailedMonths((previous) => {
+            if (previous.has(index)) return previous
+
+            const next = new Set(previous)
+            next.add(index)
+            return next
+          })
+        })
+    })
+  }, [failedMonths, monthIndex, resolvedImageByMonth])
+
   function markImageAsFailed() {
     setFailedMonths((previous) => {
       if (previous.has(monthIndex)) return previous
@@ -75,12 +107,12 @@ function HeroImage({ month }) {
   }
 
   return (
-  <article className={`${styles.hero} calendar-hero calendar-ui-chrome`}>
+    <article className={`${styles.hero} calendar-hero calendar-ui-chrome`}>
       {!isImageError && heroImageSrc ? (
         <img
           key={`${monthToken}-${heroImageSrc}`}
           src={heroImageSrc}
-          alt="Wall calendar"
+          alt={`${monthName} ${year} wall calendar image`}
           className={`${styles.image} calendar-flip`}
           loading="eager"
           fetchPriority="high"

@@ -14,6 +14,11 @@
 
 .day:hover {
   background: var(--month-accent-ghost, #f3f7fb);
+  transform: translateY(-1px);
+}
+
+.day:active {
+  transform: scale(0.96);
 }
 
 .day:focus-visible {
