@@ -2,25 +2,19 @@ import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import styles from './HeroImage.module.css'
 
-const loadImage = (webpPath, jpgPath) => {
-  return import(webpPath)
-    .then((module) => module.default)
-    .catch(() => import(jpgPath).then((module) => module.default))
-}
-
 const HERO_IMAGE_LOADERS_BY_MONTH = [
-  () => loadImage('../../assets/hero-january.webp', '../../assets/hero-january.jpg'),
-  () => loadImage('../../assets/hero-february.webp', '../../assets/hero-february.jpg'),
-  () => loadImage('../../assets/hero-march.webp', '../../assets/hero-march.jpg'),
-  () => loadImage('../../assets/hero-april.webp', '../../assets/hero-april.jpg'),
-  () => loadImage('../../assets/hero-may.webp', '../../assets/hero-may.jpg'),
-  () => loadImage('../../assets/hero-june.webp', '../../assets/hero-june.jpg'),
-  () => loadImage('../../assets/hero-july.webp', '../../assets/hero-july.jpg'),
-  () => loadImage('../../assets/hero-august.webp', '../../assets/hero-august.jpg'),
-  () => loadImage('../../assets/hero-september.webp', '../../assets/hero-september.jpg'),
-  () => loadImage('../../assets/hero-october.webp', '../../assets/hero-october.jpg'),
-  () => loadImage('../../assets/hero-november.webp', '../../assets/hero-november.jpg'),
-  () => loadImage('../../assets/hero-december.webp', '../../assets/hero-december.jpg'),
+  () => import('../../assets/hero-january.webp').then((module) => module.default),
+  () => import('../../assets/hero-february.webp').then((module) => module.default),
+  () => import('../../assets/hero-march.webp').then((module) => module.default),
+  () => import('../../assets/hero-april.webp').then((module) => module.default),
+  () => import('../../assets/hero-may.webp').then((module) => module.default),
+  () => import('../../assets/hero-june.webp').then((module) => module.default),
+  () => import('../../assets/hero-july.webp').then((module) => module.default),
+  () => import('../../assets/hero-august.webp').then((module) => module.default),
+  () => import('../../assets/hero-september.webp').then((module) => module.default),
+  () => import('../../assets/hero-october.webp').then((module) => module.default),
+  () => import('../../assets/hero-november.webp').then((module) => module.default),
+  () => import('../../assets/hero-december.webp').then((module) => module.default),
 ]
 
 function HeroImage({ month }) {
