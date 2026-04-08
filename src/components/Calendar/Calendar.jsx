@@ -22,6 +22,7 @@ function Calendar({ month, onNextMonth, onPreviousMonth, onToday }) {
   } = useDateSelection()
 
   const days = buildMonthGrid(month)
+  const monthToken = format(month, 'yyyy-MM')
   const weekdayLabels = getWeekdayLabels()
   const monthLabel = getMonthLabel(month)
   const rangeLabel = formatRangeLabel(startDate, endDate)
@@ -34,7 +35,7 @@ function Calendar({ month, onNextMonth, onPreviousMonth, onToday }) {
       <div className={styles.contentRow}>
         <NotesSection key={notesKey} notesKey={notesKey} />
 
-        <section className={styles.datesPane}>
+        <section key={monthToken} className={`${styles.datesPane} calendar-flip`}>
           <MonthHeader
             monthLabel={monthLabel}
             onPrevious={onPreviousMonth}

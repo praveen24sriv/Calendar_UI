@@ -1,26 +1,42 @@
 import { useState } from 'react'
 import { format } from 'date-fns'
-import heroRotation1 from '../../assets/hero-rotation-1.jpg'
-import heroRotation2 from '../../assets/hero-rotation-2.jpg'
-import heroRotation3 from '../../assets/hero-rotation-3.jpg'
-import heroRotation4 from '../../assets/hero-rotation-4.jpg'
+import heroJanuary from '../../assets/hero-january.jpg'
+import heroFebruary from '../../assets/hero-february.jpg'
+import heroMarch from '../../assets/hero-march.jpg'
+import heroApril from '../../assets/hero-april.jpg'
+import heroMay from '../../assets/hero-may.jpg'
+import heroJune from '../../assets/hero-june.jpg'
+import heroJuly from '../../assets/hero-july.jpg'
+import heroAugust from '../../assets/hero-august.jpg'
+import heroSeptember from '../../assets/hero-september.jpg'
+import heroOctober from '../../assets/hero-october.jpg'
+import heroNovember from '../../assets/hero-november.jpg'
+import heroDecember from '../../assets/hero-december.jpg'
 import styles from './HeroImage.module.css'
 
-const HERO_IMAGES = [
-  heroRotation1,
-  heroRotation2,
-  heroRotation3,
-  heroRotation4,
+const HERO_IMAGES_BY_MONTH = [
+  heroJanuary,
+  heroFebruary,
+  heroMarch,
+  heroApril,
+  heroMay,
+  heroJune,
+  heroJuly,
+  heroAugust,
+  heroSeptember,
+  heroOctober,
+  heroNovember,
+  heroDecember,
 ]
 
 function HeroImage({ month }) {
   const [failedImages, setFailedImages] = useState(() => new Set())
+  const monthToken = format(month, 'yyyy-MM')
   const monthName = format(month, 'MMMM').toUpperCase()
   const year = format(month, 'yyyy')
 
-  const totalMonths = month.getFullYear() * 12 + month.getMonth()
-  const rotationIndex = Math.floor(totalMonths / 4) % HERO_IMAGES.length
-  const heroImage = HERO_IMAGES[rotationIndex]
+  const monthIndex = month.getMonth()
+  const heroImage = HERO_IMAGES_BY_MONTH[monthIndex]
   const isImageError = failedImages.has(heroImage)
 
   function markImageAsFailed() {
@@ -39,9 +55,10 @@ function HeroImage({ month }) {
     <article className={styles.hero}>
       {!isImageError ? (
         <img
+          key={`${monthToken}-${heroImage}`}
           src={heroImage}
           alt="Wall calendar"
-          className={styles.image}
+          className={`${styles.image} calendar-flip`}
           onError={markImageAsFailed}
         />
       ) : (
@@ -49,7 +66,7 @@ function HeroImage({ month }) {
           <span className={styles.emoji} aria-hidden>
             🗓️
           </span>
-          <p>Check files in `src/assets/hero-rotation-1..4.jpg`</p>
+          <p>Check files in `src/assets/hero-january..hero-december.jpg`</p>
         </div>
       )}
 
