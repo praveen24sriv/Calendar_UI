@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.titleWrap {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+}
+
+.todayButton {
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--text-subtle);
+  padding: 0.15rem 0.45rem;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.todayButton:hover {
+  border-color: var(--primary);
+  color: var(--primary-600);
+}
+
+.navButton {
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--text-main);
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.navButton:hover {
+  border-color: var(--primary);
+  color: var(--primary-600);
+}

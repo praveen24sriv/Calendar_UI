@@ -1,0 +1,63 @@
+.wrapper {
+  padding-top: 0.3rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.status {
+  font-size: 0.74rem;
+  color: #94a3b8;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 205px;
+  resize: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0.25rem 0.2rem;
+  color: #334155;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 26px,
+      #dbe3ee 26px,
+      #dbe3ee 28px
+    );
+  line-height: 28px;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.saveButton {
+  justify-self: start;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  background: #0f172a;
+  color: var(--text-inverse);
+  cursor: pointer;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.saveButton:hover {
+  background: #1e293b;
+}

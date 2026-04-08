@@ -1,8 +1,13 @@
+import Layout from './components/Layout/Layout'
+import HeroImage from './components/Hero/HeroImage'
+import Calendar from './components/Calendar/Calendar'
+
 function App() {
   return (
-    <div>
-      <h1>Calendar UI Starting Point</h1>
-    </div>
+    <Layout
+      hero={<HeroImage />}
+      calendar={<Calendar />}
+    />
   )
 }
 

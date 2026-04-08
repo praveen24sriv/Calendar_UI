@@ -1,16 +1,89 @@
-# React + Vite
+# Interactive Wall Calendar UI (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A polished frontend-only calendar component inspired by a physical wall calendar layout.
 
-Currently, two official plugins are available:
+## What this project demonstrates
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Wall calendar aesthetic** with a hero image panel + monthly calendar panel.
+- **Date range selection** (start date, end date, preview-on-hover, in-range highlighting).
+- **Integrated notes section** with `localStorage` persistence.
+- **Responsive layout**:
+	- Desktop: side-by-side panels.
+	- Mobile: stacked, touch-friendly layout.
+- **Bonus UX features**:
+	- `Today` quick-jump button.
+	- Lightweight holiday markers on common dates.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite 8
+- CSS Modules
+- date-fns
 
-## Expanding the ESLint configuration
+## Project structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+src/
+├── assets/
+│   └── hero-image.jpg
+├── components/
+│   ├── Calendar/
+│   ├── Hero/
+│   ├── Notes/
+│   └── Layout/
+├── hooks/
+│   ├── useCalendar.js
+│   ├── useDateSelection.js
+│   └── useNotes.js
+├── utils/
+│   ├── dateHelpers.js
+│   └── classNames.js
+├── App.jsx
+├── index.css
+└── main.jsx
+```
+
+## Local development
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run development server
+
+```bash
+npm run dev
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+### Production build
+
+```bash
+npm run build
+```
+
+## Notes persistence model
+
+Notes are stored client-side in `localStorage` under `calendar-ui-notes-v1`.
+Each note is keyed by visible month and selected start date.
+
+## Assessment submission checklist
+
+- [ ] Push this project to a public GitHub/GitLab repository.
+- [ ] Record a short demo (Loom/YouTube) showing:
+	- Date range selection behavior
+	- Notes save + reload behavior
+	- Desktop and mobile responsiveness
+- [ ] (Optional) Deploy a live demo using Vercel/Netlify/GitHub Pages.
+
+## Customizing the hero image
+
+Replace `src/assets/hero-image.jpg` with your own calendar image to match your preferred aesthetic.

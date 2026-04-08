@@ -1,0 +1,35 @@
+.wrapper {
+  padding: 1rem 1.2rem 1.3rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.selectionHint {
+  margin: 0;
+  padding: 0.5rem 0.1rem;
+  color: #6b7280;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.contentRow {
+  display: grid;
+  grid-template-columns: 0.92fr 1.2fr;
+  gap: 1.2rem;
+}
+
+.datesPane {
+  display: grid;
+  gap: 0.55rem;
+}
+
+@media (max-width: 820px) {
+  .wrapper {
+    padding: 0.9rem;
+  }
+
+  .contentRow {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
