@@ -4,7 +4,13 @@ import Calendar from './components/Calendar/Calendar'
 import { useCalendar } from './hooks/useCalendar'
 
 function App() {
-  const { month, goToNextMonth, goToPreviousMonth, goToToday } = useCalendar()
+  const {
+    month,
+    transitionDirection,
+    goToNextMonth,
+    goToPreviousMonth,
+    goToToday,
+  } = useCalendar()
 
   return (
     <Layout
@@ -12,6 +18,7 @@ function App() {
       calendar={(
         <Calendar
           month={month}
+          transitionDirection={transitionDirection}
           onNextMonth={goToNextMonth}
           onPreviousMonth={goToPreviousMonth}
           onToday={goToToday}

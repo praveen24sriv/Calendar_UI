@@ -77,3 +77,26 @@ const HOLIDAYS_BY_MONTH_DAY = {
 export function getHolidayLabel(date) {
   return HOLIDAYS_BY_MONTH_DAY[format(date, 'MM-dd')] ?? null
 }
+
+export function formatDayAriaLabel(date, holidayLabel) {
+  const baseLabel = format(date, 'EEEE, MMMM d, yyyy')
+  return holidayLabel ? `${baseLabel}. ${holidayLabel}.` : baseLabel
+}
+
+export function getHolidaysForMonth(monthDate) {
+  const year = monthDate.getFullYear()
+  const month = format(monthDate, 'MM')
+
+  return Object.entries(HOLIDAYS_BY_MONTH_DAY)
+    .filter(([monthDay]) => monthDay.startsWith(`${month}-`))
+    .map(([monthDay, label]) => {
+      const [, day] = monthDay.split('-')
+      const holidayDate = new Date(year, monthDate.getMonth(), Number(day))
+
+      return {
+        key: `${format(monthDate, 'yyyy-MM')}-${monthDay}`,
+        label,
+        dateText: format(holidayDate, 'MMM d'),
+      }
+    })
+}

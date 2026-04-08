@@ -1,5 +1,6 @@
 import { isSameDay, isSameMonth } from 'date-fns'
 import {
+  formatDayAriaLabel,
   isDateInClosedRange,
   isDateInPreviewRange,
 } from '../../utils/dateHelpers'
@@ -23,6 +24,7 @@ function DayCell({
   const isInSelectedRange = isDateInClosedRange(dayDate, startDate, endDate)
   const isInPreviewRange = isDateInPreviewRange(dayDate, startDate, endDate, hoverDate)
   const isOutsideCurrentMonth = !isCurrentMonth || !isSameMonth(dayDate, visibleMonth)
+  const dayAriaLabel = formatDayAriaLabel(dayDate, holidayLabel)
 
   const buttonClass = classNames(
     styles.day,
@@ -40,7 +42,8 @@ function DayCell({
       onClick={() => onClick(dayDate)}
       onMouseEnter={() => onHover(dayDate)}
       aria-pressed={Boolean(isStart || isEnd)}
-      title={holidayLabel ?? undefined}
+      aria-label={dayAriaLabel}
+      title={holidayLabel ? `${dayAriaLabel} — ${holidayLabel}` : dayAriaLabel}
     >
       {dayDate.getDate()}
       {holidayLabel ? <span className={styles.holidayDot} aria-hidden /> : null}

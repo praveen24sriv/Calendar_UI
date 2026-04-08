@@ -18,6 +18,11 @@ export function useNotes(noteKey) {
   })
   const [status, setStatus] = useState('idle')
 
+  function updateNote(value) {
+    setNote(value)
+    setStatus('idle')
+  }
+
   function saveNote() {
     const notesMap = readNotesMap()
     notesMap[noteKey] = note
@@ -27,7 +32,7 @@ export function useNotes(noteKey) {
 
   return {
     note,
-    setNote,
+    setNote: updateNote,
     saveNote,
     status,
   }

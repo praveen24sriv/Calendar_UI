@@ -30,6 +30,53 @@
   gap: 0.55rem;
 }
 
+.holidayStrip {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+}
+
+.holidayTitle {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.holidayChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.holidayChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.33rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #334155;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.holidayChipDot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: #ef4444;
+}
+
+.holidayEmpty {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
 .notesPane {
   grid-area: notes;
 }
@@ -43,5 +90,9 @@
       'selection'
       'notes';
     gap: 0.95rem;
+  }
+
+  .holidayChip {
+    font-size: 0.72rem;
   }
 }
