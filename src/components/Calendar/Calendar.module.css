@@ -125,7 +125,7 @@
 .notesPane {
   grid-area: notes;
   margin-top: 0.55rem;
-  margin-left: 2.35rem;
+  margin-left: 2.55rem;
   width: calc(100% + 0.55rem);
   margin-right: -0.45rem;
   display: flex;
