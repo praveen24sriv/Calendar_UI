@@ -1,6 +1,7 @@
 import { isSameDay, isSameMonth } from 'date-fns'
 import {
   formatDayAriaLabel,
+  getRangeProgressLabel,
   isDateInClosedRange,
   isDateInPreviewRange,
 } from '../../utils/dateHelpers'
@@ -25,6 +26,8 @@ function DayCell({
   const isInPreviewRange = isDateInPreviewRange(dayDate, startDate, endDate, hoverDate)
   const isOutsideCurrentMonth = !isCurrentMonth || !isSameMonth(dayDate, visibleMonth)
   const dayAriaLabel = formatDayAriaLabel(dayDate, holidayLabel)
+  const rangeProgressLabel = getRangeProgressLabel(dayDate, startDate, endDate)
+  const tooltipText = holidayLabel || rangeProgressLabel || (isToday ? 'Today' : null)
 
   const buttonClass = classNames(
     styles.day,
@@ -47,6 +50,11 @@ function DayCell({
     >
       {dayDate.getDate()}
       {holidayLabel ? <span className={styles.holidayDot} aria-hidden /> : null}
+      {tooltipText ? (
+        <span className={styles.tooltip} role="tooltip">
+          {tooltipText}
+        </span>
+      ) : null}
     </button>
   )
 }

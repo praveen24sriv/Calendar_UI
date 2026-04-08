@@ -9,6 +9,13 @@
   --primary: #3b82f6;
   --primary-600: #2b8bcf;
   --primary-100: #eaf5fd;
+  --month-accent: #3b82f6;
+  --month-accent-strong: #2b8bcf;
+  --month-accent-soft: #eaf5fd;
+  --month-accent-ghost: #f4f9fe;
+  --month-ink: #0f1f3a;
+  --month-muted: #6a7a93;
+  --month-line: #c7d6ef;
 
   --text-main: #0f172a;
   --text-subtle: #64748b;
@@ -118,5 +125,43 @@ textarea {
   .calendar-flip-next,
   .calendar-flip-today {
     animation: none;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff;
+    color: #0f172a;
+  }
+
+  .calendar-page {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .calendar-frame,
+  .calendar-sheet {
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .calendar-ui-chrome,
+  .calendar-hero {
+    display: none !important;
+  }
+
+  .calendar-flip,
+  .calendar-flip-prev,
+  .calendar-flip-next,
+  .calendar-flip-today {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  textarea {
+    border: 0 !important;
+    box-shadow: none !important;
+    min-height: 220px;
   }
 }

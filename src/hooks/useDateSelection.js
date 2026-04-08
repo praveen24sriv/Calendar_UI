@@ -35,6 +35,12 @@ export function useDateSelection() {
     setHoverDate(null)
   }
 
+  function clearSelection() {
+    setStartDate(null)
+    setEndDate(null)
+    setHoverDate(null)
+  }
+
   return {
     startDate,
     endDate,
@@ -42,5 +48,6 @@ export function useDateSelection() {
     onDayClick,
     onDayHover,
     resetHover,
+    clearSelection,
   }
 }

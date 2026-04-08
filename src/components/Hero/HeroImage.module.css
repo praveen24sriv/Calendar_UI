@@ -1,7 +1,11 @@
 .hero {
   position: relative;
   min-height: 410px;
-  background: linear-gradient(160deg, #dbeafe 0%, #93c5fd 100%);
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--month-accent-soft, #dbeafe) 78%, #ffffff 22%) 0%,
+    color-mix(in srgb, var(--month-accent, #93c5fd) 62%, #ffffff 38%) 100%
+  );
 }
 
 .image {
@@ -18,7 +22,7 @@
   place-content: center;
   gap: 0.75rem;
   text-align: center;
-  color: #1e3a8a;
+  color: var(--month-accent-strong, #1e3a8a);
   padding: 1rem;
 }
 
@@ -38,7 +42,7 @@
 
 .leftWing,
 .rightWing {
-  background: #2f9de0;
+  background: var(--month-accent, #2f9de0);
 }
 
 .leftWing {

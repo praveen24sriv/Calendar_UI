@@ -75,7 +75,7 @@ function HeroImage({ month }) {
   }
 
   return (
-    <article className={styles.hero}>
+  <article className={`${styles.hero} calendar-hero calendar-ui-chrome`}>
       {!isImageError && heroImageSrc ? (
         <img
           key={`${monthToken}-${heroImageSrc}`}

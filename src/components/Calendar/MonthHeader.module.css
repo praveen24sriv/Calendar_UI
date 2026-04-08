@@ -22,10 +22,10 @@
 }
 
 .todayButton {
-  border: 1px solid #e2e8f0;
+  border: 1px solid color-mix(in srgb, var(--month-accent-soft) 60%, #d9e2ef 40%);
   border-radius: 999px;
-  background: #ffffff;
-  color: var(--text-subtle);
+  background: color-mix(in srgb, var(--month-accent-ghost) 56%, #ffffff 44%);
+  color: var(--month-muted);
   padding: 0.18rem 0.58rem;
   font-size: var(--fs-body-sm);
   font-weight: 500;
@@ -33,17 +33,17 @@
 }
 
 .todayButton:hover {
-  border-color: var(--primary);
-  color: var(--primary-600);
+  border-color: var(--month-accent);
+  color: var(--month-accent-strong);
 }
 
 .navButton {
   width: 1.9rem;
   height: 1.9rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid color-mix(in srgb, var(--month-accent-soft) 60%, #d9e2ef 40%);
   border-radius: 999px;
-  background: #ffffff;
-  color: #334155;
+  background: color-mix(in srgb, var(--month-accent-ghost) 54%, #ffffff 46%);
+  color: var(--month-ink);
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
@@ -60,6 +60,6 @@
 }
 
 .navButton:hover {
-  border-color: var(--primary);
-  color: var(--primary-600);
+  border-color: var(--month-accent);
+  color: var(--month-accent-strong);
 }

@@ -1,8 +1,11 @@
+import { useEffect, useMemo } from 'react'
 import { format } from 'date-fns'
 import { useDateSelection } from '../../hooks/useDateSelection'
 import {
   buildMonthGrid,
   formatRangeLabel,
+  getMonthThemeVars,
+  getRangeSummary,
   getHolidaysForMonth,
   getMonthLabel,
   getWeekdayLabels,
@@ -21,6 +24,7 @@ function Calendar({ month, transitionDirection, onNextMonth, onPreviousMonth, on
     onDayClick,
     onDayHover,
     resetHover,
+    clearSelection,
   } = useDateSelection()
 
   const days = buildMonthGrid(month)
@@ -28,8 +32,10 @@ function Calendar({ month, transitionDirection, onNextMonth, onPreviousMonth, on
   const weekdayLabels = getWeekdayLabels()
   const monthLabel = getMonthLabel(month)
   const rangeLabel = formatRangeLabel(startDate, endDate)
+  const rangeSummary = useMemo(() => getRangeSummary(startDate, endDate), [startDate, endDate])
   const notesKey = monthToken
   const monthHolidays = getHolidaysForMonth(month)
+  const monthThemeVars = useMemo(() => getMonthThemeVars(month), [month])
   const datesPaneClassName = classNames(
     styles.datesPane,
     'calendar-flip',
@@ -38,8 +44,53 @@ function Calendar({ month, transitionDirection, onNextMonth, onPreviousMonth, on
     transitionDirection === 'today' && 'calendar-flip-today',
   )
 
+  useEffect(() => {
+    function handleKeyboard(event) {
+      if (event.metaKey || event.ctrlKey || event.altKey) return
+
+      const target = event.target
+      const tagName = target?.tagName?.toLowerCase()
+      const isEditable = tagName === 'input' || tagName === 'textarea' || target?.isContentEditable
+
+      if (isEditable) return
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault()
+        onPreviousMonth()
+      }
+
+      if (event.key === 'ArrowRight') {
+        event.preventDefault()
+        onNextMonth()
+      }
+
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        clearSelection()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyboard)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyboard)
+    }
+  }, [clearSelection, onNextMonth, onPreviousMonth])
+
+  function formatNights(count) {
+    return `${count} night${count === 1 ? '' : 's'}`
+  }
+
+  function formatWeekends(count) {
+    return `${count} weekend${count === 1 ? '' : 's'}`
+  }
+
+  function formatHolidays(count) {
+    return `${count} holiday${count === 1 ? '' : 's'}`
+  }
+
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapper} style={monthThemeVars}>
       <section key={monthToken} className={datesPaneClassName}>
         <MonthHeader
           monthLabel={monthLabel}
@@ -60,7 +111,7 @@ function Calendar({ month, transitionDirection, onNextMonth, onPreviousMonth, on
           onGridLeave={resetHover}
         />
 
-        <section className={styles.holidayStrip} aria-label="Holidays this month">
+        <section className={`${styles.holidayStrip} calendar-ui-chrome`} aria-label="Holidays this month">
           <p className={styles.holidayTitle}>Holiday markers</p>
           {monthHolidays.length ? (
             <div className={styles.holidayChips}>
@@ -75,9 +126,23 @@ function Calendar({ month, transitionDirection, onNextMonth, onPreviousMonth, on
             <p className={styles.holidayEmpty}>No configured holiday markers this month.</p>
           )}
         </section>
+
+        {rangeSummary ? (
+          <p
+            key={`${format(startDate, 'yyyy-MM-dd')}-${format(endDate, 'yyyy-MM-dd')}`}
+            className={styles.rangeSummaryBar}
+          >
+            📅 {rangeSummary.rangeText} · {formatNights(rangeSummary.nights)} · {formatWeekends(rangeSummary.weekendCount)} · {formatHolidays(rangeSummary.holidayCount)}
+          </p>
+        ) : null}
       </section>
 
-      <p className={styles.selectionHint}>Selected: {rangeLabel}</p>
+      <section className={styles.selectionPane}>
+        <p className={styles.selectionHint}>Selected: {rangeLabel}</p>
+        <p className={`${styles.keyboardHint} calendar-ui-chrome`}>
+          ⌨︎ ←/→ change month · Enter select day · Esc clear range
+        </p>
+      </section>
 
       <section className={styles.notesPane}>
         <NotesSection key={notesKey} notesKey={notesKey} />

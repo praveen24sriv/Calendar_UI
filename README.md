@@ -5,6 +5,11 @@
 - Delivers complete assessment scope: wall-calendar aesthetic, selectable date range, integrated notes, and responsive desktop/mobile UX.
 - Uses frontend-only persistence via `localStorage`, matching the no-backend assessment requirement.
 - Keeps bundle lean with CSS-only animations and no heavy UI/animation dependencies.
+- Auto-shifts calendar accent palette by month for a more alive and seasonal UI.
+- Adds hover/focus day tooltips (holiday name, range progress, and today context).
+- Shows an animated range summary bar with nights, weekends, and holiday counts.
+- Supports keyboard shortcuts: `←`/`→` month navigation, `Enter` day select, `Esc` range reset.
+- Supports print mode (`Ctrl+P`) with clean calendar + notes output and hidden UI chrome.
 
 ## Architectural Strategy & Tech Stack
 - Built with **React + Vite** and zero external calendar/animation libraries.

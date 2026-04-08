@@ -8,7 +8,7 @@ function NotesSection({ notesKey }) {
     <section className={styles.wrapper}>
       <div className={styles.headerRow}>
         <h3 className={styles.title}>Notes</h3>
-        <span className={styles.status}>
+        <span className={`${styles.status} calendar-ui-chrome`}>
           {status === 'saved' ? 'Saved' : 'Not saved'}
         </span>
       </div>
@@ -21,7 +21,7 @@ function NotesSection({ notesKey }) {
         rows={5}
       />
 
-      <button type="button" className={styles.saveButton} onClick={saveNote}>
+      <button type="button" className={`${styles.saveButton} calendar-ui-chrome`} onClick={saveNote}>
         Save note
       </button>
     </section>
