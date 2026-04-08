@@ -1,5 +1,4 @@
 import { format } from 'date-fns'
-import { useCalendar } from '../../hooks/useCalendar'
 import { useDateSelection } from '../../hooks/useDateSelection'
 import {
   buildMonthGrid,
@@ -12,8 +11,7 @@ import DayGrid from './DayGrid'
 import NotesSection from '../Notes/NotesSection'
 import styles from './Calendar.module.css'
 
-function Calendar() {
-  const { month, goToNextMonth, goToPreviousMonth, goToToday } = useCalendar()
+function Calendar({ month, onNextMonth, onPreviousMonth, onToday }) {
   const {
     startDate,
     endDate,
@@ -39,9 +37,9 @@ function Calendar() {
         <section className={styles.datesPane}>
           <MonthHeader
             monthLabel={monthLabel}
-            onPrevious={goToPreviousMonth}
-            onNext={goToNextMonth}
-            onToday={goToToday}
+            onPrevious={onPreviousMonth}
+            onNext={onNextMonth}
+            onToday={onToday}
           />
 
           <DayGrid

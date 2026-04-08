@@ -13,15 +13,27 @@ const HERO_IMAGES = [
   heroRotation4,
 ]
 
-function HeroImage() {
-  const today = new Date()
-  const [isImageError, setIsImageError] = useState(false)
-  const monthName = format(today, 'MMMM').toUpperCase()
-  const year = format(today, 'yyyy')
+function HeroImage({ month }) {
+  const [failedImages, setFailedImages] = useState(() => new Set())
+  const monthName = format(month, 'MMMM').toUpperCase()
+  const year = format(month, 'yyyy')
 
-  const totalMonths = today.getFullYear() * 12 + today.getMonth()
+  const totalMonths = month.getFullYear() * 12 + month.getMonth()
   const rotationIndex = Math.floor(totalMonths / 4) % HERO_IMAGES.length
   const heroImage = HERO_IMAGES[rotationIndex]
+  const isImageError = failedImages.has(heroImage)
+
+  function markImageAsFailed() {
+    setFailedImages((previous) => {
+      if (previous.has(heroImage)) {
+        return previous
+      }
+
+      const next = new Set(previous)
+      next.add(heroImage)
+      return next
+    })
+  }
 
   return (
     <article className={styles.hero}>
@@ -30,7 +42,7 @@ function HeroImage() {
           src={heroImage}
           alt="Wall calendar"
           className={styles.image}
-          onError={() => setIsImageError(true)}
+          onError={markImageAsFailed}
         />
       ) : (
         <div className={styles.fallback}>
