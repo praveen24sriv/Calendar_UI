@@ -1,6 +1,7 @@
 .wrapper {
   display: grid;
   gap: 0.35rem;
+  padding-left: var(--grid-left-inset, 0.35rem);
 }
 
 .weekdayRow,
@@ -22,3 +23,5 @@
 .weekdayCell:nth-child(7) {
   color: var(--month-accent, #3e9dd9);
 }
+
+/* Uses --grid-left-inset from Calendar wrapper for responsive alignment */

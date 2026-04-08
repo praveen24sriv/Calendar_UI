@@ -3,6 +3,7 @@
   --month-accent-strong: #2b8bcf;
   --month-accent-soft: #eaf5fd;
   --month-accent-ghost: #f4f9fe;
+  --grid-left-inset: 0.35rem;
 
   padding: 1rem 1.2rem 1.3rem;
   display: grid;
@@ -17,6 +18,7 @@
   grid-area: selection;
   display: grid;
   gap: 0.12rem;
+  padding-left: var(--grid-left-inset);
   border-bottom: 1px solid color-mix(in srgb, var(--month-accent-soft) 60%, #e2e8f0 40%);
 }
 
@@ -43,6 +45,7 @@
 .holidayStrip {
   display: grid;
   gap: 0.35rem;
+  padding-left: var(--grid-left-inset);
   margin-top: 0.15rem;
 }
 
@@ -122,10 +125,15 @@
 .notesPane {
   grid-area: notes;
   margin-top: 0.55rem;
+  margin-left: 2.35rem;
+  width: calc(100% + 0.55rem);
+  margin-right: -0.45rem;
+  display: flex;
 }
 
 @media (max-width: 820px) {
   .wrapper {
+    --grid-left-inset: 0.15rem;
     padding: 0.9rem;
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -145,5 +153,12 @@
 
   .notesPane {
     margin-top: 0;
+    margin-left: 0;
+    display: block;
+    width: 100%;
+  }
+
+  .notesPane > * {
+    width: 100%;
   }
 }
