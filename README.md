@@ -1,89 +1,46 @@
-# Interactive Wall Calendar UI (React + Vite)
+# Calendar UI Component
 
-A polished frontend-only calendar component inspired by a physical wall calendar layout.
+## Standout Highlights
+- Built full calendar logic from scratch (month matrix, range selection, leap-year/date handling) without calendar libraries.
+- Delivers complete assessment scope: wall-calendar aesthetic, selectable date range, integrated notes, and responsive desktop/mobile UX.
+- Uses frontend-only persistence via `localStorage`, matching the no-backend assessment requirement.
+- Keeps bundle lean with CSS-only animations and no heavy UI/animation dependencies.
 
-## What this project demonstrates
+## Architectural Strategy & Tech Stack
+- Built with **React + Vite** and zero external calendar/animation libraries.
+- **Framework:** React (Vite).
+- **Styling:** CSS Modules / Vanilla CSS.
+- **Persistence:** `localStorage`.
 
-- **Wall calendar aesthetic** with a hero image panel + monthly calendar panel.
-- **Date range selection** (start date, end date, preview-on-hover, in-range highlighting).
-- **Integrated notes section** with `localStorage` persistence.
-- **Responsive layout**:
-	- Desktop: side-by-side panels.
-	- Mobile: stacked, touch-friendly layout.
-- **Bonus UX features**:
-	- `Today` quick-jump button.
-	- Lightweight holiday markers on common dates.
+## Key Engineering Decisions
 
-## Tech stack
+### 1. Vanilla CSS over Utility Frameworks (Tailwind)
+- Used CSS Modules + Vanilla CSS to showcase core CSS architecture.
+- **CSS Grid** handles 7x5/7x6 calendar layout math.
+- **Flexbox** manages responsive panel structure.
+- **CSS Variables** power theme, spacing, and consistency.
 
-- React 19
-- Vite 8
-- CSS Modules
-- date-fns
+### 2. High-Fidelity Assets vs. Performance Budget
+- Kept 12 monthly hero images for visual fidelity while optimizing delivery.
+- Converted raw JPGs to compressed **WebP** via a custom Node.js + `sharp` script.
+- Used **lazy loading** and dynamic imports so only the active month image loads initially.
 
-## Project structure
+### 3. State Management & Custom Hooks
+- Managed state locally with React hooks to avoid over-engineering.
+- Moved business logic into custom hooks like `useCalendar`, `useDateSelection`, and `useNotes`.
 
-```text
-src/
-├── assets/
-│   └── hero-image.jpg
-├── components/
-│   ├── Calendar/
-│   ├── Hero/
-│   ├── Notes/
-│   └── Layout/
-├── hooks/
-│   ├── useCalendar.js
-│   ├── useDateSelection.js
-│   └── useNotes.js
-├── utils/
-│   ├── dateHelpers.js
-│   └── classNames.js
-├── App.jsx
-├── index.css
-└── main.jsx
-```
+### 4. UX & Mobile Layout Priority
+- Prioritized calendar interaction on mobile by placing the grid directly below the hero.
+- Kept notes below the grid on small screens to reduce friction for primary actions.
 
-## Local development
+### 5. CSS-Only Micro-Interactions
+- Implemented month flip transitions with CSS keyframes for zero animation-library overhead.
+- Triggered animation by changing a month/year-based React `key` on the grid container.
 
-### Install dependencies
+## Local Development Setup
+- Install deps: `npm install`.
+- Start dev server: `npm run dev`.
+- Build production bundle: `npm run build`.
 
-```bash
-npm install
-```
 
-### Run development server
 
-```bash
-npm run dev
-```
-
-### Lint
-
-```bash
-npm run lint
-```
-
-### Production build
-
-```bash
-npm run build
-```
-
-## Notes persistence model
-
-Notes are stored client-side in `localStorage` under `calendar-ui-notes-v1`.
-Each note is keyed by visible month and selected start date.
-
-## Assessment submission checklist
-
-- [ ] Push this project to a public GitHub/GitLab repository.
-- [ ] Record a short demo (Loom/YouTube) showing:
-	- Date range selection behavior
-	- Notes save + reload behavior
-	- Desktop and mobile responsiveness
-- [ ] (Optional) Deploy a live demo using Vercel/Netlify/GitHub Pages.
-
-## Customizing the hero image
-
-Replace `src/assets/hero-image.jpg` with your own calendar image to match your preferred aesthetic.
